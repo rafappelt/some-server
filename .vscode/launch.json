@@ -1,0 +1,37 @@
+{
+  // Use o IntelliSense para saber mais sobre os atributos possíveis.
+  // Focalizar para exibir as descrições dos atributos existentes.
+  // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Tests",
+      "program": "${workspaceRoot}/node_modules/.bin/jest",
+      "cwd": "${workspaceRoot}",
+      "console": "integratedTerminal",
+      "args": ["--i", "--config", "jest.config.js", "--setupFiles", "dotenv/config", "--", "GetAttestationEffectiveness"],
+      "windows": {
+        "type": "node",
+        "request": "launch",
+        "name": "Debug Tests",
+        "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run server",
+      "console": "integratedTerminal",
+      "program": "${workspaceRoot}/node_modules/.bin/ts-node",
+      "cwd": "${workspaceRoot}",
+      "args": ["-r", "dotenv/config", "src/index.ts"],
+      "env": {
+        "CLOUD_SNAP_API_URL": "http://localhost:8080",
+        "AWS_SDK_LOAD_CONFIG": "true",
+        "OAUTH": "disabled"
+      }
+    },
+  ]
+}
